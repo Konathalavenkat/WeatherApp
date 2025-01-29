@@ -1,0 +1,95 @@
+body {
+    background-image: url(../assets/sunny_bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    color: white;
+    background-attachment: fixed; 
+    padding: 2px;
+}
+
+.Current {
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 5px;
+    box-sizing: content-box;
+    color: white;
+    display: flex;
+    /* flex-wrap: wrap; */
+    overflow: auto;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.Current div{
+    width: 40%;
+    min-width: 100px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0.4rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+header input{
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+#hourly-forecast {
+    margin-bottom: 1rem;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 5px;
+    box-sizing: content-box;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: auto;
+    font-size: 0.5rem;
+    text-align: center;
+}
+
+.hourly {
+    width: max(100px,9.09%);
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+#forecast-history {
+    margin-bottom: 1rem;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 5px;
+    box-sizing: content-box;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+    /* flex-wrap: wrap; */
+    overflow: auto;
+    font-size: 0.5rem;
+    text-align: center;
+}
+
+.day {
+    width: 14.28%;
+    min-width: 5rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+@media only screen and (min-width: 600px) {
+    .day , .hourly {
+        padding: 1.5em;
+    }
+    .Current {
+        padding: 3rem;
+        width: 25%;
+
+    }
+  }
