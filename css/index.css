@@ -6,8 +6,7 @@ body {
     width: 100%;
     color: white;
     background-attachment: fixed; 
-
-    padding: 2px;
+    padding: 5px;
 }
 .content {
     min-width: fit-content;
@@ -18,7 +17,7 @@ body {
     background-color: rgba(0,0,0,0.4);
     border-radius: 10px;
     box-sizing: content-box;
-    
+
     text-wrap: nowrap;
     overflow: auto;
     color: white;

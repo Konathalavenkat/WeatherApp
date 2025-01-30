@@ -259,4 +259,13 @@ window.onload = () => {
       updateHourlyForecast();
     }
   });
+  inputbox.addEventListener('keydown',function(event){
+    if(event.key == "Enter"){
+      if (inputbox.value.length > 2) {
+        document.getElementById('loader').style.display = 'flex';
+        updateCurrentData(inputbox.value);
+        updateHourlyForecast();
+      }
+    }
+  })
 };
