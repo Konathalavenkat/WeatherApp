@@ -16,7 +16,7 @@ body {
 
 .Current {
     background-color: rgba(0,0,0,0.4);
-    border-radius: 5px;
+    border-radius: 10px;
     box-sizing: content-box;
     
     text-wrap: nowrap;
@@ -59,7 +59,7 @@ header {
 #hourly-forecast {
     margin-bottom: 1rem;
     background-color: rgba(0,0,0,0.4);
-    border-radius: 5px;
+    border-radius: 10px;
     box-sizing: content-box;
     display: flex;
     gap: 10px;
@@ -79,7 +79,7 @@ header {
 #forecast-history {
     margin-bottom: 1rem;
     background-color: rgba(0,0,0,0.4);
-    border-radius: 5px;
+    border-radius: 10px;
     box-sizing: content-box;
     display: flex;
     gap: 10px;
@@ -175,4 +175,17 @@ height: 100%;
 
 .accordion-item .accordion-button::after {
     color: #fff;
+}
+
+#loader {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 20;
+    display: hidden;
 }

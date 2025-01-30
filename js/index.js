@@ -36,7 +36,7 @@ window.onload = () => {
     const location = inputlocation
       ? inputlocation
       : window.localStorage.getItem("Location");
-    const url = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${
+    const url = `https://api.weatherapi.com/v1/current.json?key=${key}&q=${
       location ? location : "28.7041,77.1025"
     }&aqi=yes`;
     try {
@@ -82,6 +82,7 @@ window.onload = () => {
         (data.current.is_day === 1 ? "" : "_night")
       }.png`;
     } catch (err) {
+      document.getElementById('loader').style.display = 'none'
       console.log(err);
     }
   }
@@ -111,12 +112,12 @@ window.onload = () => {
   async function updateHourlyForecast() {
     try {
       const location = window.localStorage.getItem("Location");
-      const url = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location ? location : "28.7041,77.1025"}&days=4&aqi=yes&alerts=yes`;
+      const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location ? location : "28.7041,77.1025"}&days=4&aqi=yes&alerts=yes`;
       const today = new Date();
       let prevday = new Date();
       prevday.setDate(prevday.getDate() - 3);
 
-      const historyurl = `http://api.weatherapi.com/v1/history.json?key=${key}&q=${location ? location : "28.7041,77.1025"}&dt=${getDateFormat(prevday)}&end_dt=${getDateFormat(today)}`;
+      const historyurl = `https://api.weatherapi.com/v1/history.json?key=${key}&q=${location ? location : "28.7041,77.1025"}&dt=${getDateFormat(prevday)}&end_dt=${getDateFormat(today)}`;
 
       const [forecastResponse, historyResponse] = await Promise.all([
         fetch(url),
@@ -216,8 +217,11 @@ window.onload = () => {
       }
       div2.innerHTML = dailydata.join("");
       div.innerHTML = "";
+      document.getElementById("Hourly-text").innerText = '';
       setEvents();
+      document.getElementById('loader').style.display = 'none'
     } catch (err) {
+        document.getElementById('loader').style.display = 'none'
       console.log(err);
     }
   }
@@ -250,6 +254,7 @@ window.onload = () => {
   search.addEventListener("click", () => {
     console.log(inputbox.value);
     if (inputbox.value.length > 2) {
+      document.getElementById('loader').style.display = 'flex';
       updateCurrentData(inputbox.value);
       updateHourlyForecast();
     }
