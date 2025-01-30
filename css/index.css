@@ -6,24 +6,42 @@ body {
     width: 100%;
     color: white;
     background-attachment: fixed; 
+
     padding: 2px;
+}
+.content {
+    min-width: fit-content;
+
 }
 
 .Current {
     background-color: rgba(0,0,0,0.4);
     border-radius: 5px;
     box-sizing: content-box;
+    
+    text-wrap: nowrap;
+    overflow: auto;
     color: white;
     display: flex;
     /* flex-wrap: wrap; */
     overflow: auto;
-    gap: 10px;
+    gap : 10px;
     margin-bottom: 0.5rem;
+    padding: 0.5rem;
+
 }
 
 .Current div{
     width: 40%;
     min-width: 100px;
+}
+
+.Current .details {
+    min-width: fit-content;
+}
+
+.Current div #current-img {
+    max-width: 125px;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -32,14 +50,11 @@ h1,h2,h3,h4,h5,h6 {
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0.5rem;
 }
 
-header input{
-    padding: 0.5rem;
-    margin-right: 0.5rem;
-}
+
 
 #hourly-forecast {
     margin-bottom: 1rem;
@@ -69,6 +84,7 @@ header input{
     display: flex;
     gap: 10px;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     /* flex-wrap: wrap; */
     overflow: auto;
@@ -82,6 +98,9 @@ header input{
     padding: 0.5rem;
     box-sizing: border-box;
 }
+.day[day]:not([day=""]){
+    cursor: pointer;
+}
 
 @media only screen and (min-width: 600px) {
     .day , .hourly {
@@ -89,7 +108,71 @@ header input{
     }
     .Current {
         padding: 3rem;
-        width: 25%;
+        width: 30%;
+        min-width: fit-content;
 
     }
+    #forecast-history{
+        flex-wrap: nowrap;
+    }
   }
+
+.hourly,.day{
+    min-width: fit-content;
+    text-wrap: nowrap;
+}
+
+img {
+    max-width: 100px;
+}
+
+.search{
+
+    border-top-right-radius: 32px !important;
+    border-bottom-right-radius: 32px !important;
+    background-color: #fff;
+    height: 100%;
+    border: 0;
+    padding: 0 8px;
+}
+
+
+
+.location{
+
+     border-top-left-radius: 32px !important;
+border-bottom-left-radius: 32px !important;
+background-color: #fff !important ;
+height: 100%;
+
+
+}
+
+.input-group-prepend {
+    margin-right: -2px !important;
+}
+
+
+.input-group-append {
+    margin-left: -2px !important;
+}
+
+.accordion , .accordion-flush .accordion-item, .accordion-item .accordion-button{ 
+    background-color: rgba(0,0,0,0);
+    color: #fff;
+    padding: 0;
+}
+.accordion-item .accordion-button:not(.collapsed){
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    box-shadow: 0 0 0 0;
+}
+.accordion-collapse p {
+    padding: 0;
+    margin: 0.2rem;
+    padding-left: 0.2rem;
+}
+
+.accordion-item .accordion-button::after {
+    color: #fff;
+}

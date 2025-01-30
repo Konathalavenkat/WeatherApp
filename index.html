@@ -9,17 +9,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
-<body id="body">
+<body id="body" class="text-white">
     <header>
-        <div>Weather App</div>
         <div>
-            
+            <!-- <input id="Location-box" class="form-control form-control-lg" type="text" placeholder="Location" /> -->
+            <div class="input-group col-sm-7  input-group-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text location">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                    </svg>
+                  </span>
+                </div>
+                <input id="Location-box" type="text" class="form-control">
+                <div class=" input-group-append">
+                  <button class="input-group-text search" id="search" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                  </svg></button>
+                </div>
+     </div>
         </div>
     </header>
     <div id="demo" ></div>
     <div class="Current">
         <div >
-            <img id="current-img" src="./assets/cloudy.png" width="100%">
+            <img id="current-img" src="./assets/cloudy.png">
         </div>
         <div id="details">
             <h2>Bengaluru</h2>
@@ -27,12 +41,12 @@
             <h6>Max Temp: 25C</h6>
         </div>
     </div>
-    <h2>Hourly Forecast</h2>
+    <h4 id="Hourly-text" ></h4>
 
     <div id="hourly-forecast">
         <div class="hourly">
             <div>
-                <img src="./assets/cloudy.png" width="100%" />
+                <img src="./assets/cloudy.png" />
             </div>
             <div>
                 <h2>12:00</h2>
@@ -42,7 +56,7 @@
         </div>
         <div class="hourly">
             <div>
-                <img src="./assets/cloudy.png" width="100%" />
+                <img src="./assets/cloudy.png" />
             </div>
             <div>
                 <h2>12:00</h2>
@@ -52,7 +66,7 @@
         </div>
         <div class="hourly">
             <div>
-                <img src="./assets/cloudy.png" width="100%" />
+                <img src="./assets/cloudy.png" />
             </div>
             <div>
                 <h2>12:00</h2>
@@ -62,7 +76,7 @@
         </div>
         <div class="hourly">
             <div>
-                <img src="./assets/cloudy.png" width="100%" />
+                <img src="./assets/cloudy.png" />
             </div>
             <div>
                 <h2>12:00</h2>
@@ -72,7 +86,17 @@
         </div>
         <div class="hourly">
             <div>
-                <img src="./assets/cloudy.png" width="100%" />
+                <img src="./assets/cloudy.png" />
+            </div>
+            <div>
+                <h2>12:00</h2>
+                <h3>Cloudy</h3>
+                <h3>Temp : 25C</h3>
+            </div>
+        </div>
+        <div class="hourly">
+            <div >
+                <img src="./assets/cloudy.png" />
             </div>
             <div>
                 <h2>12:00</h2>
@@ -82,7 +106,7 @@
         </div>
         <div class="hourly">
             <div>
-                <img src="./assets/cloudy.png" width="100%" />
+                <img src="./assets/cloudy.png" />
             </div>
             <div>
                 <h2>12:00</h2>
@@ -92,7 +116,7 @@
         </div>
         <div class="hourly">
             <div>
-                <img src="./assets/cloudy.png" width="100%" />
+                <img src="./assets/cloudy.png" />
             </div>
             <div>
                 <h2>12:00</h2>
@@ -102,7 +126,7 @@
         </div>
         <div class="hourly">
             <div>
-                <img src="./assets/cloudy.png" width="100%" />
+                <img src="./assets/cloudy.png" />
             </div>
             <div>
                 <h2>12:00</h2>
@@ -112,17 +136,7 @@
         </div>
         <div class="hourly">
             <div>
-                <img src="./assets/cloudy.png" width="100%" />
-            </div>
-            <div>
-                <h2>12:00</h2>
-                <h3>Cloudy</h3>
-                <h3>Temp : 25C</h3>
-            </div>
-        </div>
-        <div class="hourly">
-            <div>
-                <img src="./assets/cloudy.png" width="100%" />
+                <img src="./assets/cloudy.png" />
             </div>
             <div>
                 <h2>12:00</h2>
@@ -131,11 +145,11 @@
             </div>
         </div>
     </div>
-    <h2>Day Forecast and History</h2>
+    <h4 >Day Forecast and History</h4>
     <div id="forecast-history">
         <div class="day">
             <div>
-                <img src="./assets/cloudy.png" width="100%" >
+                <img src="./assets/cloudy.png" >
             </div>
             <div>
                 <h2>Day: 2025-01-26</h2>
@@ -146,7 +160,7 @@
         </div>
         <div class="day">
             <div>
-                <img src="./assets/cloudy.png" width="100%" >
+                <img src="./assets/cloudy.png" >
             </div>
             <div>
                 <h2>Day: 2025-01-26</h2>
@@ -157,7 +171,7 @@
         </div>
         <div class="day">
             <div>
-                <img src="./assets/cloudy.png" width="100%" >
+                <img src="./assets/cloudy.png" >
             </div>
             <div>
                 <h2>Day: 2025-01-26</h2>
@@ -168,7 +182,7 @@
         </div>
         <div class="day">
             <div>
-                <img src="./assets/cloudy.png" width="100%" >
+                <img src="./assets/cloudy.png" >
             </div>
             <div>
                 <h2>Day: 2025-01-26</h2>
@@ -179,7 +193,7 @@
         </div>
         <div class="day">
             <div>
-                <img src="./assets/cloudy.png" width="100%" >
+                <img src="./assets/cloudy.png" >
             </div>
             <div>
                 <h2>Day: 2025-01-26</h2>
@@ -190,7 +204,7 @@
         </div>
         <div class="day">
             <div>
-                <img src="./assets/cloudy.png" width="100%" >
+                <img src="./assets/cloudy.png" >
             </div>
             <div>
                 <h2>Day: 2025-01-26</h2>
@@ -201,7 +215,7 @@
         </div>
         <div class="day">
             <div>
-                <img src="./assets/cloudy.png" width="100%" >
+                <img src="./assets/cloudy.png" >
             </div>
             <div>
                 <h2>Day: 2025-01-26</h2>
