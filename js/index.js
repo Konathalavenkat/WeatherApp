@@ -132,7 +132,7 @@ window.onload = () => {
       hourlydata.splice(0, hourlydata.length);
       const dailydata = [];
       const todayhourlydata = [];
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < Math.min(3,history.forecast.forecastday.length); i++) {
         const d = history.forecast.forecastday[i];
         dailydata.push(`
                 <div class="day">
@@ -153,10 +153,10 @@ window.onload = () => {
 
       for (
         let i = Number(history.location.localtime.substring(11, 13));
-        i < 24;
+        i < Math.min(24,forecastData.forecast.forecastday[0].hour.length);
         i++
       ) {
-        const hourdata = history.forecast.forecastday[0].hour[i];
+        const hourdata = forecastData.forecast.forecastday[0].hour[i];
         todayhourlydata.push(`
                 <div class="hourly">
                     <div>
@@ -174,7 +174,7 @@ window.onload = () => {
                 `);
       }
       hourlydata.push(todayhourlydata);
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < Math.min(4,forecastData.forecast.forecastday.length); i++) {
         const d = forecastData.forecast.forecastday[i];
         dailydata.push(`
                 <div class="day" id="${d.date}" day="${i}">
@@ -194,7 +194,7 @@ window.onload = () => {
         if (i != 0) {
           const temphourlydata = [];
 
-          for (let hour = 0; hour < 24; hour++) {
+          for (let hour = 0; hour < Math.min(24,forecastData.forecast.forecastday[i].hour.length); hour++) {
             const hourdata = forecastData.forecast.forecastday[i].hour[hour];
             temphourlydata.push(`
                         <div class="hourly">
