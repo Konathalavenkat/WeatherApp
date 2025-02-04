@@ -259,12 +259,33 @@ window.onload = () => {
       updateHourlyForecast();
     }
   });
-  inputbox.addEventListener('keydown',function(event){
+  inputbox.addEventListener('keydown',async function(event){
     if(event.key == "Enter"){
       if (inputbox.value.length > 2) {
         document.getElementById('loader').style.display = 'flex';
         updateCurrentData(inputbox.value);
         updateHourlyForecast();
+      }
+    }
+    else{
+      const autocompleteapi = `https://api.weatherapi.com/v1/search.json?key=${key}&q=${inputbox.value}`;
+      try{
+        const searchresponse = await fetch(autocompleteapi);
+        if(!searchresponse.ok){
+          throw new Error(searchresponse.response);
+        }
+        const cities =  await searchresponse.json();
+        const data = [];
+        for(const city of cities){
+          data.push(`
+              <option> ${city.name}, ${city.region} </option>
+            `)
+        }
+        document.getElementById('list-autocomplete').innerHTML = data.join(" ");
+
+      }
+      catch(err){
+        console.log(err);
       }
     }
   })
