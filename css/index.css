@@ -188,3 +188,30 @@ height: 100%;
     z-index: 20;
     display: hidden;
 }
+
+#Location-box{
+    anchor-name: --input;
+}
+
+#list-autocomplete{
+    position: absolute;
+    position-anchor: --input;
+    position-area: bottom center;
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    width: anchor-size(width);
+    overflow: auto;
+}
+
+#list-autocomplete option{
+    padding: 5px 15px;
+    border-bottom: 1px grey solid;
+    overflow: scroll;
+    font-size: 1.4rem;
+}
+
+#list-autocomplete option:hover{
+    background-color: rgb(203, 203, 203);
+    cursor: pointer;
+}

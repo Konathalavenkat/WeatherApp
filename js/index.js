@@ -246,6 +246,11 @@ window.onload = () => {
     });
   }
 
+  function updateinput(){
+    const inputbox = document.getElementById('Location-box');
+    inputbox.value = this.value;
+    document.getElementById('list-autocomplete').innerHTML = "";
+  }
   getLocation();
   updateCurrentData();
   updateHourlyForecast();
@@ -257,6 +262,8 @@ window.onload = () => {
       document.getElementById('loader').style.display = 'flex';
       updateCurrentData(inputbox.value);
       updateHourlyForecast();
+      inputbox.value = "";
+      document.getElementById('list-autocomplete').innerHTML = "";
     }
   });
   inputbox.addEventListener('keydown',async function(event){
@@ -265,6 +272,8 @@ window.onload = () => {
         document.getElementById('loader').style.display = 'flex';
         updateCurrentData(inputbox.value);
         updateHourlyForecast();
+        inputbox.value = "";
+        document.getElementById('list-autocomplete').innerHTML = "";
       }
     }
     else{
@@ -278,11 +287,14 @@ window.onload = () => {
         const data = [];
         for(const city of cities){
           data.push(`
-              <option> ${city.name}, ${city.region} </option>
+              <option> ${city.name}${city.region ? ',' : ""} ${city.region} </option>
             `)
         }
-        document.getElementById('list-autocomplete').innerHTML = data.join(" ");
 
+        document.getElementById('list-autocomplete').innerHTML = data.join(" ");
+        for(const option of document.getElementById('list-autocomplete').children){
+          option.addEventListener('click',updateinput);
+        }
       }
       catch(err){
         console.log(err);
