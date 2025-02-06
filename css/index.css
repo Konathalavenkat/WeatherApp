@@ -94,7 +94,7 @@ header {
     border-radius: 10px;
     box-sizing: content-box;
     flex-wrap: wrap;
-    display: flex;
+    display: none;
     overflow: scroll;
 }
 

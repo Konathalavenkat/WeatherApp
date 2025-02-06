@@ -3,7 +3,7 @@ window.onload = () => {
   window.localStorage.setItem("Location", "Bengaluru");
   // document.getElementById('Location').innerText = window.localStorage.getItem('Location');
   const key = "7f275b4a47ef4dd3843155639252801";
-
+  let showdata = false;
   const hourlydata = [];
 
   function getLocation() {
@@ -27,6 +27,18 @@ window.onload = () => {
       "Location",
       position.coords.latitude + "," + position.coords.longitude
     );
+  }
+
+  function toggledata(){
+    showdata = !showdata;
+    if(showdata){
+      document.getElementById('forecast-history').style.display = 'flex';
+      document.getElementById('toggler').innerText = 'Hide daywise data';
+    }
+    else{
+      document.getElementById('forecast-history').style.display = 'none';
+      document.getElementById('toggler').innerText = 'Show daywise data';
+    }
   }
 
   async function updateCurrentData(inputlocation) {
@@ -69,6 +81,7 @@ window.onload = () => {
                     <p> Precipitation : ${data.current.precip_in} in</p>
                 </div>
               </div>
+              <button class="btn btn-primary mt-2 ml-5" id="toggler">${showdata ? 'Hide daywise data' : 'Show daywise data'} </button>
 
             </div>
             `;
@@ -81,6 +94,7 @@ window.onload = () => {
         getWeatherFromCode(data.current.condition.code) +
         (data.current.is_day === 1 ? "" : "_night")
       }.png`;
+      document.getElementById("toggler").addEventListener('click',toggledata);
     } catch (err) {
       document.getElementById('loader').style.display = 'none'
       console.log(err);
