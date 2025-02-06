@@ -1,3 +1,16 @@
+#loader {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 20;
+    display: hidden;
+}
+
 body {
     background-image: url(../assets/sunny_bg.jpg);
     background-size: cover;
@@ -80,19 +93,42 @@ header {
     background-color: rgba(0,0,0,0.4);
     border-radius: 10px;
     box-sizing: content-box;
+    flex-wrap: wrap;
+    display: flex;
+    overflow: scroll;
+}
+
+#forecast-container {
+    border-left: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.accordion-header .accordion-button:not(.collapsed){
+    color: white;
+}
+
+.accordion-button::after{
+    filter: grayscale(100%) , invert(100%);
+}
+
+#history-container h3, #forecast-container h3{
+    padding-left: 3rem;
+    padding-top: 3px;
+}
+#History , #Forecast {
     display: flex;
     gap: 10px;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    /* overflow: auto; */
     justify-content: space-evenly;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     overflow: auto;
     font-size: 0.5rem;
     text-align: center;
 }
 
 .day {
-    width: 14.28%;
+    width: max(150px,14.28vw);
     min-width: 5rem;
     padding: 0.5rem;
     box-sizing: border-box;
@@ -113,6 +149,10 @@ header {
     }
     #forecast-history{
         flex-wrap: nowrap;
+    }
+    #History , #Forecast {
+        flex-wrap: nowrap;
+        border-radius: 0px;
     }
   }
 
@@ -176,18 +216,7 @@ height: 100%;
     color: #fff;
 }
 
-#loader {
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0,0,0,0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    z-index: 20;
-    display: hidden;
-}
+
 
 #Location-box{
     anchor-name: --input;
@@ -204,14 +233,18 @@ height: 100%;
     overflow: auto;
 }
 
-#list-autocomplete option{
+#list-autocomplete li{
     padding: 5px 15px;
     border-bottom: 1px grey solid;
     overflow: scroll;
     font-size: 1.4rem;
 }
 
-#list-autocomplete option:hover{
+#list-autocomplete li::marker{
+    content: '';
+}
+
+#list-autocomplete li:hover{
     background-color: rgb(203, 203, 203);
     cursor: pointer;
 }

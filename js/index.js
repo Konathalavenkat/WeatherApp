@@ -132,6 +132,10 @@ window.onload = () => {
       hourlydata.splice(0, hourlydata.length);
       const dailydata = [];
       const todayhourlydata = [];
+      dailydata.push(`
+        <div id="history-container">
+            <h3>History</h3>
+            <div id="History">`)
       for (let i = 0; i < Math.min(3,history.forecast.forecastday.length); i++) {
         const d = history.forecast.forecastday[i];
         dailydata.push(`
@@ -142,7 +146,7 @@ window.onload = () => {
                         )}.png" width="100%" >
                     </div>
                     <div>
-                        <h5>${d.date}</h5>
+                        <h6>${d.date}</h5>
                         <h6>${d.day.condition.text}</h6>
                         <h6>Max temp: ${d.day.maxtemp_c}°C</h6>
                         <h6>Min temp: ${d.day.mintemp_c}°C</h6>
@@ -150,7 +154,11 @@ window.onload = () => {
                 </div>
                 `);
       }
-
+      dailydata.push(`    </div>
+        </div>
+        <div id="forecast-container">
+            <h3>Forecast</h3>
+            <div id="Forecast">`)
       for (
         let i = Number(history.location.localtime.substring(11, 13));
         i < Math.min(24,forecastData.forecast.forecastday[0].hour.length);
@@ -215,6 +223,8 @@ window.onload = () => {
           hourlydata.push(temphourlydata);
         }
       }
+      dailydata.push(`        </div>
+        </div>`);
       div2.innerHTML = dailydata.join("");
       div.innerHTML = "";
       document.getElementById("Hourly-text").innerText = '';
@@ -246,9 +256,9 @@ window.onload = () => {
     });
   }
 
-  function updateinput(){
+  function updateinput(text){
     const inputbox = document.getElementById('Location-box');
-    inputbox.value = this.value;
+    inputbox.value = this.innerText ? this.innerText : text;
     document.getElementById('list-autocomplete').innerHTML = "";
   }
   getLocation();
@@ -284,16 +294,12 @@ window.onload = () => {
           throw new Error(searchresponse.response);
         }
         const cities =  await searchresponse.json();
-        const data = [];
-        for(const city of cities){
-          data.push(`
-              <option> ${city.name}${city.region ? ',' : ""} ${city.region} </option>
-            `)
-        }
+        data = cities.map((val,i) => (`<li tabindex="0"> ${val.name} ${val.region ? ', ' : '' }${val.region} </li>`))
 
         document.getElementById('list-autocomplete').innerHTML = data.join(" ");
         for(const option of document.getElementById('list-autocomplete').children){
           option.addEventListener('click',updateinput);
+          option.addEventListener('keydown',function(event){if(event.key == "Enter") updateinput(this.innerText)});  
         }
       }
       catch(err){
