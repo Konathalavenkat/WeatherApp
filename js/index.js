@@ -1,8 +1,9 @@
 window.onload = () => {
-  console.log("Onload funtion running");
+
   window.localStorage.setItem("Location", "Bengaluru");
-  // document.getElementById('Location').innerText = window.localStorage.getItem('Location');
+
   const key = "7f275b4a47ef4dd3843155639252801";
+
   let showdata = false;
   const hourlydata = [];
 
@@ -31,13 +32,16 @@ window.onload = () => {
 
   function toggledata(){
     showdata = !showdata;
+    console.log(document.main)
     if(showdata){
       document.getElementById('forecast-history').style.display = 'flex';
-      document.getElementById('toggler').innerText = 'Hide daywise data';
+      document.getElementById('toggler').innerText = 'Hide daywise data'; 
+      document.getElementById('main').style.display = 'block';
     }
     else{
       document.getElementById('forecast-history').style.display = 'none';
       document.getElementById('toggler').innerText = 'Show daywise data';
+      document.getElementById('main').style.display = 'flex';
     }
   }
 
@@ -275,11 +279,14 @@ window.onload = () => {
     inputbox.value = this.innerText ? this.innerText : text;
     document.getElementById('list-autocomplete').innerHTML = "";
   }
+
   getLocation();
   updateCurrentData();
   updateHourlyForecast();
+
   const search = document.getElementById("search");
   const inputbox = document.getElementById("Location-box");
+
   search.addEventListener("click", () => {
     console.log(inputbox.value);
     if (inputbox.value.length > 2) {
@@ -290,6 +297,7 @@ window.onload = () => {
       document.getElementById('list-autocomplete').innerHTML = "";
     }
   });
+
   inputbox.addEventListener('keydown',async function(event){
     if(event.key == "Enter"){
       if (inputbox.value.length > 2) {
@@ -321,4 +329,5 @@ window.onload = () => {
       }
     }
   })
+  
 };

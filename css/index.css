@@ -11,6 +11,18 @@
     display: hidden;
 }
 
+*{
+    transition: fade-in 1s ease;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+}
+
 body {
     background-image: url(../assets/sunny_bg.jpg);
     background-size: cover;
@@ -40,6 +52,7 @@ body {
     gap : 10px;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
+    height: max-content;
 
 }
 
@@ -66,7 +79,11 @@ header {
     padding: 0.5rem;
 }
 
-
+#forecast-history h3{
+    text-align: center;
+    padding-top: 2px;
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.295);
+}
 
 #hourly-forecast {
     margin-bottom: 1rem;
@@ -110,10 +127,7 @@ header {
     filter: grayscale(100%) , invert(100%);
 }
 
-#history-container h3, #forecast-container h3{
-    padding-left: 3rem;
-    padding-top: 3px;
-}
+
 #History , #Forecast {
     display: flex;
     gap: 10px;
@@ -153,6 +167,17 @@ header {
     #History , #Forecast {
         flex-wrap: nowrap;
         border-radius: 0px;
+    }
+    #forecast-history h3{
+        text-align: start;
+        
+        
+    }
+
+    #history-container h3, #forecast-container h3{
+        padding-left: 3rem;
+        padding-top: 3px;
+        text-shadow: none;
     }
   }
 
