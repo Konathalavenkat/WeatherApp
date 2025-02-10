@@ -37,11 +37,15 @@ window.onload = () => {
       document.getElementById('forecast-history').style.display = 'flex';
       document.getElementById('toggler').innerText = 'Hide daywise data'; 
       document.getElementById('main').style.display = 'block';
+      document.getElementById('Hourly-text').style.display = 'block';
     }
     else{
       document.getElementById('forecast-history').style.display = 'none';
       document.getElementById('toggler').innerText = 'Show daywise data';
       document.getElementById('main').style.display = 'flex';
+      document.getElementById('Hourly-text').style.display = 'none';
+      document.getElementById('Hourly-text').innerText = ''
+      document.getElementById('hourly-forecast').innerHTML = '';
     }
   }
 
@@ -93,7 +97,7 @@ window.onload = () => {
         "body"
       ).style.backgroundImage = `url(./assets/${getWeatherFromCode(
         data.current.condition.code
-      )}_bg.jpg)`;
+      )}_bg-min.jpg)`;
       document.getElementById("current-img").src = `./assets/${
         getWeatherFromCode(data.current.condition.code) +
         (data.current.is_day === 1 ? "" : "_night")
@@ -161,7 +165,7 @@ window.onload = () => {
                     <div>
                         <img src="./assets/${getWeatherFromCode(
                           d.day.condition.code
-                        )}.png" width="100%" >
+                        )}.png" width="100%" loading="lazy">
                     </div>
                     <div>
                         <h6>${d.date}</h5>
@@ -189,7 +193,7 @@ window.onload = () => {
                         <img src="./assets/${
                           getWeatherFromCode(hourdata.condition.code) +
                           (hourdata.is_day === 1 ? "" : "_night")
-                        }.png" width="100%" >
+                        }.png" width="100%" loading="lazy">
                     </div>
                     <div>
                         <h5>${hourdata.time.substring(11, 16)}</h5>
@@ -207,7 +211,7 @@ window.onload = () => {
                     <div>
                         <img src="./assets/${getWeatherFromCode(
                           d.day.condition.code
-                        )}.png" width="100%" >
+                        )}.png" width="100%" loading="lazy">
                     </div>
                     <div>
                         <h6>${d.date}</h6>
@@ -228,7 +232,7 @@ window.onload = () => {
                                 <img src="./assets/${
                                   getWeatherFromCode(hourdata.condition.code) +
                                   (hourdata.is_day === 1 ? "" : "_night")
-                                }.png" width="100%" >
+                                }.png" width="100%" loading="lazy" >
                             </div>
                             <div>
                                 <h5>${hourdata.time.substring(11, 16)}</h5>
@@ -277,6 +281,11 @@ window.onload = () => {
   function updateinput(text){
     const inputbox = document.getElementById('Location-box');
     inputbox.value = this.innerText ? this.innerText : text;
+    document.getElementById('list-autocomplete').innerHTML = "";
+    document.getElementById('loader').style.display = 'flex';
+    updateCurrentData(inputbox.value);
+    updateHourlyForecast();
+    inputbox.value = "";
     document.getElementById('list-autocomplete').innerHTML = "";
   }
 

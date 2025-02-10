@@ -12,7 +12,7 @@
 }
 
 *{
-    transition: fade-in 1s ease;
+    transition: all 1s ease;
 }
 
 main {
@@ -24,7 +24,7 @@ main {
 }
 
 body {
-    background-image: url(../assets/sunny_bg.jpg);
+    background-image: url(../assets/sunny_bg-min.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -54,6 +54,10 @@ body {
     padding: 0.5rem;
     height: max-content;
 
+}
+
+#Hourly-text{
+    display: none;
 }
 
 .Current div{
