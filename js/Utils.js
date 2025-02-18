@@ -2,7 +2,7 @@
 /**
  * Utility Function that fetches the data from api
  * @param {String} url - Url of the API
- * @returns data of the api response
+ * @returns {json} - data of the api response
  */
 export async function fetchFromAPI(url){
     try{
@@ -23,7 +23,7 @@ export async function fetchFromAPI(url){
 /**
  * Function that returns Generalized Weather name from condition code
  * @param {Number} code - code Representing the Weather Condition
- * @returns generalized weather name
+ * @returns {String} - generalized weather name
  */
 export function getWeatherFromCode(code) {
     if (code <= 1000) {

@@ -73,7 +73,7 @@ window.onload = () => {
   /**
    * Function that returns the HTML code for Current Component
    * @param {json} data - Response data of the current api
-   * @returns HTML code of the Current Component
+   * @returns {String} HTML code of the Current Component
    */
   function CurrentUIComponent(data){
     return `
@@ -105,7 +105,7 @@ window.onload = () => {
   }
 
   /**
-   * Updated the Background image of the body according to the weather
+   * Updates the Background image of the body according to the weather
    * @param {Number} code - Code representing the Weather Condition
    */
   function updateBackgroundImageOfBody(code){
@@ -134,7 +134,6 @@ window.onload = () => {
       document.getElementById("current-img").src = `./assets/${getWeatherFromCode(data.current.condition.code) +(data.current.is_day === 1 ? "" : "_night")}.png`;
       document.getElementById("toggler").addEventListener('click',toggledata);
     } catch (err) {
-      document.getElementById('loader').style.display = 'none'
       console.log(err);
     }
   }
@@ -142,7 +141,7 @@ window.onload = () => {
   /**
    * Formats the Date
    * @param {String} date 
-   * @returns Formatted Date String
+   * @returns {String} - Formatted Date String
    */
   function getDateFormat(date) {
     return (
@@ -190,10 +189,10 @@ window.onload = () => {
       }
 
       worker.postMessage({forecastData,history});
-      document.getElementById('loader').style.display = 'none'
     } catch (err) {
-        document.getElementById('loader').style.display = 'none'
       console.log(err);
+    } finally{
+      document.getElementById('loader').style.display = 'none'
     }
   }
 
@@ -222,14 +221,11 @@ window.onload = () => {
 
   /**
    * Updates the Search with the clicked autocomplete field
-   * @param {String} text - text of the autocomplete 
    */
-  function updateinput(text){
-    const inputbox = document.getElementById('Location-box');
-    inputbox.value = this.innerText ? this.innerText : text;
+  function searchLocation(){
     document.getElementById('list-autocomplete').innerHTML = "";
     document.getElementById('loader').style.display = 'flex';
-    updateCurrentData(inputbox.value);
+    updateCurrentData(this.innerText);
     updateHistoryAndForecast();
     inputbox.value = "";
     document.getElementById('list-autocomplete').innerHTML = "";
@@ -264,7 +260,7 @@ window.onload = () => {
         document.getElementById('list-autocomplete').innerHTML = "";
       }
     }
-    else{
+    else if(event.key!=='Tab'){
       clearTimeout(debounceTimeOut);
       debounceTimeOut = setTimeout(async ()=>{
         const autocompleteapi = `https://api.weatherapi.com/v1/search.json?key=${key}&q=${inputbox.value}`;
@@ -274,12 +270,14 @@ window.onload = () => {
             throw new Error(searchresponse.response);
           }
           const cities =  await searchresponse.json();
-          data = cities.map((val,i) => (`<li tabindex="0"> ${val.name} ${val.region ? ', ' : '' }${val.region} </li>`))
-
-          document.getElementById('list-autocomplete').innerHTML = data.join(" ");
+          const data = cities.map((val,i) => (`<li tabindex="0"> ${val.name} ${val.region ? ', ' : '' }${val.region} </li>`))
+          const list = document.getElementById('list-autocomplete');
+          list.innerHTML = data.join(" ");
           for(const option of document.getElementById('list-autocomplete').children){
-            option.addEventListener('click',updateinput);
-            option.addEventListener('keydown',function(event){if(event.key == "Enter") updateinput(this.innerText)});  
+            option.addEventListener('click',searchLocation);
+            option.addEventListener('keydown',(event)=>{if(event.key == "Enter"){
+              searchLocation.bind(option)();
+            }});  
           }
         }
         catch(err){

@@ -1,7 +1,7 @@
 
 onmessage = function(event){
     const {forecastData,history} = event.data;
-    console.log(forecastData,history,"from worker")
+    // console.log(forecastData,history,"from worker")
     const hourlydata = [];
     const dailydata = [];
       const todayhourlydata = [];
