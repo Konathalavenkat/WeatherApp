@@ -133,6 +133,7 @@ window.onload = () => {
       updateBackgroundImageOfBody(data.current.condition.code);
       document.getElementById("current-img").src = `./assets/${getWeatherFromCode(data.current.condition.code) +(data.current.is_day === 1 ? "" : "_night")}.png`;
       document.getElementById("toggler").addEventListener('click',toggledata);
+      window.localStorage.setItem("Location",location);
     } catch (err) {
       console.log(err);
     }

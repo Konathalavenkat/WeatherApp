@@ -124,6 +124,10 @@ header {
     margin: 3px;
 }
 
+#history-container{
+    width: 100%;
+}
+
 .accordion-header .accordion-button:not(.collapsed){
     color: white;
 }
@@ -157,35 +161,7 @@ header {
     cursor: pointer;
 }
 
-@media only screen and (min-width: 600px) {
-    .day , .hourly {
-        padding: 1.5em;
-    }
-    .Current {
-        padding: 3rem;
-        width: 30%;
-        min-width: fit-content;
 
-    }
-    #forecast-history{
-        flex-wrap: nowrap;
-    }
-    #History , #Forecast {
-        flex-wrap: nowrap;
-        border-radius: 0px;
-    }
-    #forecast-history h3{
-        text-align: start;
-        
-        
-    }
-
-    #history-container h3, #forecast-container h3{
-        padding-left: 3rem;
-        padding-top: 3px;
-        text-shadow: none;
-    }
-  }
 
 .hourly,.day{
     min-width: fit-content;
@@ -279,3 +255,35 @@ height: 100%;
     background-color: rgb(203, 203, 203);
     cursor: pointer;
 }
+
+@media only screen and (min-width: 600px) {
+    .day , .hourly {
+        padding: 1.5em;
+    }
+    .Current {
+        padding: 3rem;
+        width: 30%;
+        min-width: fit-content;
+
+    }
+    #forecast-history{
+        flex-wrap: nowrap;
+    }
+    #History , #Forecast {
+        flex-wrap: nowrap;
+        border-radius: 0px;
+    }
+    #forecast-history h3{
+        text-align: start;
+        
+        
+    }
+    #history-container{
+        width: auto;
+    }
+    #history-container h3, #forecast-container h3{
+        padding-left: 3rem;
+        padding-top: 3px;
+        text-shadow: none;
+    }
+  }
