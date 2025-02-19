@@ -38,6 +38,8 @@ window.onload = () => {
       "Location",
       position.coords.latitude + "," + position.coords.longitude
     );
+    updateCurrentData();
+    updateHistoryAndForecast();
   }
 
   /**
@@ -47,6 +49,8 @@ window.onload = () => {
   function getDefaultLocation(err) {
     console.log("Location Access Not Given");
     window.localStorage.setItem("Location", "Location 28.7041,77.1025");
+    updateCurrentData();
+    updateHistoryAndForecast();
   }
 
   /**
@@ -233,8 +237,8 @@ window.onload = () => {
   }
 
   getLocation();
-  updateCurrentData();
-  updateHistoryAndForecast();
+  // updateCurrentData();
+  // updateHistoryAndForecast();
 
   const search = document.getElementById("search");
   const inputbox = document.getElementById("Location-box");
