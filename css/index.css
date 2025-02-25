@@ -56,6 +56,10 @@ body {
 
 }
 
+.Current::-webkit-scrollbar{
+    display: none;
+}
+
 #Hourly-text{
     display: none;
 }
@@ -235,7 +239,6 @@ height: 100%;
     position-area: bottom center;
     background-color: white;
     color: black;
-    overflow: hidden;
     width: anchor-size(width);
     overflow: auto;
 }
@@ -243,7 +246,6 @@ height: 100%;
 #list-autocomplete li{
     padding: 5px 15px;
     border-bottom: 1px grey solid;
-    overflow: scroll;
     font-size: 1.4rem;
 }
 
