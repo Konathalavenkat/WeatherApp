@@ -119,7 +119,7 @@ header {
     box-sizing: content-box;
     flex-wrap: wrap;
     display: none;
-    overflow: scroll;
+    overflow-x: scroll;
 }
 
 #forecast-container, #history-container {

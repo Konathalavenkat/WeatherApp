@@ -39,7 +39,6 @@ window.onload = () => {
       position.coords.latitude + "," + position.coords.longitude
     );
     updateCurrentData();
-    updateHistoryAndForecast();
   }
 
   /**
@@ -50,7 +49,6 @@ window.onload = () => {
     console.log("Location Access Not Given");
     window.localStorage.setItem("Location", "Location 28.7041,77.1025");
     updateCurrentData();
-    updateHistoryAndForecast();
   }
 
   /**
@@ -138,6 +136,7 @@ window.onload = () => {
       document.getElementById("current-img").src = `./assets/${getWeatherFromCode(data.current.condition.code) +(data.current.is_day === 1 ? "" : "_night")}.png`;
       document.getElementById("toggler").addEventListener('click',toggledata);
       window.localStorage.setItem("Location",location);
+      updateHistoryAndForecast();
     } catch (err) {
       console.log(err);
     }
@@ -160,7 +159,7 @@ window.onload = () => {
   async function updateHistoryAndForecast() {
     try {
       const location = window.localStorage.getItem("Location");
-      
+      console.log(location);
       const forecastUrl = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location ? location : "28.7041,77.1025"}&days=4&aqi=yes&alerts=yes`;
       
       const today = new Date();
@@ -227,11 +226,10 @@ window.onload = () => {
   /**
    * Updates the Search with the clicked autocomplete field
    */
-  function searchLocation(){
+  async function searchLocation(){
     document.getElementById('list-autocomplete').innerHTML = "";
     document.getElementById('loader').style.display = 'flex';
-    updateCurrentData(this.innerText);
-    updateHistoryAndForecast();
+    await updateCurrentData(this.innerText);
     inputbox.value = "";
     document.getElementById('list-autocomplete').innerHTML = "";
   }
@@ -248,7 +246,6 @@ window.onload = () => {
     if (inputbox.value.length > 2) {
       document.getElementById('loader').style.display = 'flex';
       updateCurrentData(inputbox.value);
-      updateHistoryAndForecast();
       inputbox.value = "";
       document.getElementById('list-autocomplete').innerHTML = "";
     }
@@ -260,7 +257,6 @@ window.onload = () => {
       if (inputbox.value.length > 2) {
         document.getElementById('loader').style.display = 'flex';
         updateCurrentData(inputbox.value);
-        updateHistoryAndForecast();
         inputbox.value = "";
         document.getElementById('list-autocomplete').innerHTML = "";
       }
