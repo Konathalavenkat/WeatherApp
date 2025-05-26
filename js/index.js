@@ -6,7 +6,7 @@ window.onload = () => {
   window.localStorage.setItem("Location", "Bengaluru");
 
   /** Api Key */
-  const key = "d7086282fbbf40308c254148251102";
+  const key = "dc2e462aa2bd4f79a0a121249251805";
 
   /** flag used to toggle daywise data in the UI */
   let showdata = false;

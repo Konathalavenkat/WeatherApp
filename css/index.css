@@ -48,11 +48,11 @@ body {
     color: white;
     display: flex;
     /* flex-wrap: wrap; */
-    overflow: auto;
+    overflow-x: auto;
     gap : 10px;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
-    height: max-content;
+    height: max-content;    
 
 }
 
@@ -98,7 +98,7 @@ header {
     gap: 10px;
     align-items: center;
     justify-content: space-evenly;
-    overflow: auto;
+    overflow-x: auto;
     font-size: 0.5rem;
     text-align: center;
 }
@@ -115,7 +115,7 @@ header {
     box-sizing: content-box;
     flex-wrap: wrap;
     display: none;
-    overflow: scroll;
+    overflow-x: scroll;
 }
 
 #forecast-container, #history-container {
@@ -142,10 +142,9 @@ header {
     gap: 10px;
     align-items: center;
     flex-wrap: nowrap;
-    /* overflow: auto; */
     justify-content: space-evenly;
     flex-wrap: wrap;
-    overflow: auto;
+    overflow-x: auto;
     font-size: 0.5rem;
     text-align: center;
     
@@ -235,15 +234,13 @@ height: 100%;
     position-area: bottom center;
     background-color: white;
     color: black;
-    overflow: hidden;
     width: anchor-size(width);
-    overflow: auto;
+    overflow-x: auto;
 }
 
 #list-autocomplete li{
     padding: 5px 15px;
     border-bottom: 1px grey solid;
-    overflow: scroll;
     font-size: 1.4rem;
 }
 
